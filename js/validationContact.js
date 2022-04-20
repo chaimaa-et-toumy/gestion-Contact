@@ -11,7 +11,8 @@ function invalid (element, message) {
     let errorDisplay = inputControl.querySelector('.error');
     errorDisplay.innerText = message;
     inputControl.classList.add('error');
-    inputControl.classList.remove('success')
+    inputControl.classList.remove('success');
+    return false;
 }
 
 function success (element){
@@ -37,73 +38,60 @@ let expadresse = /^[A-Za-z]{10,}$/;
     // var i = 0;
 
     if(usernameValue === '') {
-        invalid(username, 'Username is required');
-        console.log("test");
-        return false;
-        
-
+      return  invalid(username, 'Username is required');
     } 
 	else if (expname.test(usernameValue) == false){
-		invalid(username, 'enter a valid name');
-        return false;
-
+	return invalid(username, 'enter a valid name');
 	} 
-	// else {
-    //     success(username);
-    //     i++; 
-    // }
-
-    else if(phoneValue === '') {
-        invalid(phone, 'phone is required');
-        return false;
-
+	else {
+      success(username);
+    }
+     if(phoneValue === '') {
+       return invalid(phone, 'phone is required');
     } 
     else if (expphone.test(phoneValue) == false){
-		invalid(phone, 'enter a valid phone');
-        return false;
+		return invalid(phone, 'enter a valid phone');
+       
 
 
     } 
-    // else {
-    //     success(phone);
-    //     i++; 
-    // }
+    else {
+        success(phone);
+       
+    }
 
-    else if(emailValue === '') {
-        invalid(email, 'enter a valid email');
-        return false;
-
+     if(emailValue === '') {
+        return invalid(email, 'enter a valid email');
+      
 
     }   else if (expEmail.test(emailValue) == false){
-        	invalid(email, 'enter a valid email');
-            return false;
+        return invalid(email, 'enter a valid email');
+           
 
     
         }
-        //  else {
-        // success(email);
-        // i++; 
+         else {
+        success(email);
+     }
     
-   else if(adresseValue === '') {
-        invalid(adresse, 'enter a valid adresse');
-        return false;
+  if(adresseValue === '') {
+    return invalid(adresse, 'enter a valid adresse');
+        
 
 
     }   else if (expadresse.test(adresseValue) == false){
-        	invalid(adresse, 'enter a valid adresse');
-            return false;
+        return	invalid(adresse, 'enter a valid adresse');
 
     
         } 
     
-        // else {
-        // success(adresse);
-        // i++; 
-    // }
+        else {
+        success(adresse);
+    }
 
     // if (i == 4) 
     //     form.submit(); 
-    else{
-        return true;
-    }
-};
+    // else{
+    //     return true;
+    // }
+}

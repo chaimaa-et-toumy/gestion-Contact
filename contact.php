@@ -8,8 +8,11 @@ include 'include/traitement.php';
 if (isset($_POST['add'])) {
     $dbC->addContact($_POST['name'], $_POST['phone'], $_POST['email'], $_POST['adresse']);
 }
-if (isset($_GET['id'])) {
-    $dbC->delete($_GET['id']);
+// if (isset($_GET['id'])) {
+//     $dbC->delete($_GET['id']);
+// }
+if (isset($_POST['delete'])) {
+    $dbC->delete($_POST['id_delete']);
 }
 if (isset($_POST['edit'])) {
     $dbC->update($_POST['name'], $_POST['phone'], $_POST['email'], $_POST['adresse']);
@@ -25,7 +28,7 @@ $lignes = $db->affichage();
 ?>
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row ">
         <div class="mt-5 d-flex">
             <h3>Add contact</h3>
         </div>
@@ -52,7 +55,7 @@ $lignes = $db->affichage();
                                 <td><?php echo $ligne['phone']; ?></td>
                                 <td><?php echo $ligne['Adress']; ?></td>
                                 <td><a href="contact.php?edit=<?php echo $ligne['id']; ?>" class="btn">Edit <i class="fa fa-pen text-dark ps-2"></i> </a> </td>
-                                <td><a href="contact.php?id=<?php echo $ligne['id']; ?>" class="btn">delete <i class="fa fa-trash text-dark ps-2"></i> </a> </td>
+                                <td><button onclick="delete_contact(<?php echo $ligne['id']; ?>)" class="btn" data-bs-toggle="modal" data-bs-target="#deletemodal">Delete</button> </td>
                             </tr>
 
                     <?php }
@@ -107,7 +110,7 @@ $lignes = $db->affichage();
 <!-- end edit contact -->
 
 <!-- MODAL CONFIRMATION -->
-<!-- <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="deletemodalLabel" aria-hidden="true">
+<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="deletemodalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -125,12 +128,12 @@ $lignes = $db->affichage();
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger" name="delete" name="delete">Delete</button>
+                    <button type="submit" class="btn btn-danger" name="delete">Delete</button>
                 </div>
             </form>
         </div>
     </div>
-</div> -->
+</div>
 <!-- MODAL CONFIRMATION -->
 
 

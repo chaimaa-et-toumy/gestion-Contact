@@ -31,11 +31,10 @@ function validateContact(){
     let emailValue = email.value;
     let adresseValue = adresse.value;
     let expname =/^[A-Za-z]{3,}$/;
-let expEmail =/[a-z][0-9]*@[a-z]+\.[a-z]{2,3}/;
-let expphone = /^[0-9]{10,}$/;
-let expadresse = /^[A-Za-z]{10,}$/;
+    let expEmail =/[a-z][0-9]*@[a-z]+\.[a-z]{2,3}/;
+    let expphone = /^[0-9]{10,}$/;
+    let expadresse = /^[A-Za-z]{10,}$/;
 
-    // var i = 0;
 
     if(usernameValue === '') {
       return  invalid(username, 'Username is required');
@@ -88,10 +87,10 @@ let expadresse = /^[A-Za-z]{10,}$/;
         else {
         success(adresse);
     }
+}
 
-    // if (i == 4) 
-    //     form.submit(); 
-    // else{
-    //     return true;
-    // }
+// delete 
+function delete_contact(id)
+{
+  document.getElementById("id_delete").value = id;
 }

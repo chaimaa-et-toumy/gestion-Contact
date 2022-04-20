@@ -1,8 +1,8 @@
 let   form = document.getElementById('form');
-let username = document.getElementById('username');
-let phone = document.getElementById('phone');
-let email = document.getElementById('email');
-let adresse = document.getElementById('adresse');
+let username = document.getElementById('namee');
+let phone = document.getElementById('phonee');
+let email = document.getElementById('emaile');
+let adresse = document.getElementById('adressee');
 
 
 
@@ -20,67 +20,90 @@ function success (element){
     errorDisplay.innerText = '';
     inputControl.classList.add('success');
     inputControl.classList.remove('error');
-};
+}
 
-let expname =/^[A-Za-z]{3,}$/;
+
+
+function validateContact(){
+    let usernameValue = username.value;
+    let phoneValue = phone.value;
+    let emailValue = email.value;
+    let adresseValue = adresse.value;
+    let expname =/^[A-Za-z]{3,}$/;
 let expEmail =/[a-z][0-9]*@[a-z]+\.[a-z]{2,3}/;
 let expphone = /^[0-9]{10,}$/;
 let expadresse = /^[A-Za-z]{10,}$/;
 
-function validateContact(event){
-    let usernameValue = username.value.trim();
-    let phoneValue = phone.value.trim();
-    let emailValue = email.value.trim();
-    let adresseValue = adresse.value.trim();
-
-    var i = 0;
+    // var i = 0;
 
     if(usernameValue === '') {
         invalid(username, 'Username is required');
+        console.log("test");
+        return false;
+        
 
     } 
 	else if (expname.test(usernameValue) == false){
 		invalid(username, 'enter a valid name');
-	} 
-	else {
-        success(username);
-        i++; 
-    }
+        return false;
 
-    if(phoneValue === '') {
+	} 
+	// else {
+    //     success(username);
+    //     i++; 
+    // }
+
+    else if(phoneValue === '') {
         invalid(phone, 'phone is required');
-        event.preventDefault();
+        return false;
 
     } 
     else if (expphone.test(phoneValue) == false){
 		invalid(phone, 'enter a valid phone');
+        return false;
 
-    } else {
-        success(phone);
-        i++; 
-    }
 
-    if(emailValue === '') {
+    } 
+    // else {
+    //     success(phone);
+    //     i++; 
+    // }
+
+    else if(emailValue === '') {
         invalid(email, 'enter a valid email');
+        return false;
+
 
     }   else if (expEmail.test(emailValue) == false){
         	invalid(email, 'enter a valid email');
+            return false;
+
     
-        } else {
-        success(email);
-        i++; 
-    }
-    if(adresseValue === '') {
+        }
+        //  else {
+        // success(email);
+        // i++; 
+    
+   else if(adresseValue === '') {
         invalid(adresse, 'enter a valid adresse');
+        return false;
+
 
     }   else if (expadresse.test(adresseValue) == false){
         	invalid(adresse, 'enter a valid adresse');
-    
-        } else {
-        success(adresse);
-        i++; 
-    }
+            return false;
 
-    if (i == 4) 
-        form.submit(); 
+    
+        } 
+    
+        // else {
+        // success(adresse);
+        // i++; 
+    // }
+
+    // if (i == 4) 
+    //     form.submit(); 
+    else{
+        return true;
+    }
 };

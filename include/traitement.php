@@ -62,9 +62,10 @@ class Utilisateur extends Database
             $stmt =  $this->conn->prepare("SELECT * FROM utilisateur WHERE username='$username'");
             $stmt->execute();
             $user = $stmt->fetch();
+            $user_username = $user['username'];
+
 
             if ($user) {
-                $user_username = $user['username'];
 
                 if ($username === $user_username) {
                     header("Location:inscription.php?error= username is already exist");

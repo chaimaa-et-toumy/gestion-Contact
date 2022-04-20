@@ -17,7 +17,7 @@ if (isset($_POST['create'])) {
                     <img class="img-fluid" src="registre.png" alt="login form">
                 </div>
                 <div class="col-12 col-md-6 pe-0 ">
-                    <form id=" form" method="POST" onsubmit="return validateInputs()">
+                    <form id=" form" method="POST" onsubmit="validateInputs(event);">
                         <h1 class="text-center text-black pt-5">Sign up</h1>
 
 

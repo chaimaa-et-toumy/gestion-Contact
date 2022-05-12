@@ -12,10 +12,10 @@ if (isset($_POST['submit'])) {
         <div class="container">
             <div class=" row d-flex align-items-center">
                 <div class=" d-flex justify-content-between  flex-wrap flex-lg-nowrap mt-5 ">
-                    <div class="">
+                    <div class="d-none d-md-block pe-5">
                         <img class="img-fluid" src="login.svg" alt="login form" style="width:580px ; height: 463px;">
                     </div>
-                    <div class="col-12 col-md-6 pe-0 mt-4">
+                    <div class="col-12 col-md-6 pe-0 ps-5 mt-4">
                         <form class="form" method="POST">
                             <h1 class="text-center text-black pt-5">Authenticate</h1>
                             <div class="form-group mt-3">

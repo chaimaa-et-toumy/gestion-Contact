@@ -8,9 +8,7 @@ include 'include/traitement.php';
 if (isset($_POST['add'])) {
     $dbC->addContact($_POST['name'], $_POST['phone'], $_POST['email'], $_POST['adresse']);
 }
-// if (isset($_GET['id'])) {
-//     $dbC->delete($_GET['id']);
-// }
+
 if (isset($_POST['delete'])) {
     $dbC->delete($_POST['id_delete']);
 }
@@ -23,14 +21,17 @@ if (isset($_GET['edit'])) {
 } else {
     $modal = "display:none;";
 }
+if (isset($_POST['edit'])) {
+    $dbC->update($_POST['name'], $_POST['phone'], $_POST['email'], $_POST['adresse']);
+}
 $lignes = $db->affichage();
 //
 ?>
 
 <div class="container-fluid">
     <div class="row ">
-        <div class="mt-5 d-flex">
-            <h3>Add contact</h3>
+        <div class="mt-5 text-center">
+            <h1 style="color: #4B7BE5;" class="fw-bold">Add contact</h1>
         </div>
         <?php
         if (isset($_GET['pageerror'])) echo "<div class='text-danger'>{$_GET['pageerror']}</div>";
@@ -38,7 +39,7 @@ $lignes = $db->affichage();
         <div class="mt-5">
             <div class="d-flex justify-content-between px-2">
                 <h1>Contact List </h1>
-                <button class="btn btn-primary fs-5 px-4" data-bs-toggle="modal" data-bs-target="#creatmodal">Add new contact </button>
+                <button class="btn fs-5 px-3 text-white" data-bs-toggle="modal" data-bs-target="#creatmodal" style="background-color:#4B7BE5">Add new contact </button>
             </div>
             <div class="table-responsive mt-2">
                 <table class="table table-hover table-striped  mt-2">

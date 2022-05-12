@@ -12,8 +12,8 @@ if (isset($_POST['create'])) {
 
     <div class="container">
         <div class=" row d-flex align-items-center">
-            <div class=" d-flex justify-content-around  flex-wrap flex-lg-nowrap mt-5 ">
-                <div class="col-md-4">
+            <div class=" d-flex justify-content-around  flex-wrap flex-lg-nowrap mt-3 ">
+                <div class="col-md-4 d-none d-md-block mt-5">
                     <img class="img-fluid" src="registre.png" alt="login form">
                 </div>
                 <div class="col-12 col-md-6 pe-0 ">

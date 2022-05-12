@@ -71,7 +71,6 @@ class Utilisateur extends Database
                     header("Location:inscription.php?error= username is already exist");
                 }
             } elseif ($password === $password_verify) {
-                // $password = hash('sha256', $password);
                 date_default_timezone_set('africa/casablanca');
                 $dateSign = date('Y/m/d H:i:s');
                 $q = "insert into utilisateur (username , password , signupdate ) values ( '" . $username . "' , '" . $password . "' , '" . $dateSign . "') ";
@@ -136,6 +135,7 @@ class Contact extends Database
         else
             header("Location:contact.php?pageerror= Contact not found");
     }
+
     public function update($name, $phone, $email, $adresse)
     {
         if (isset($name) && isset($phone) && isset($email) && isset($adresse)) {
@@ -145,14 +145,15 @@ class Contact extends Database
             $stmt->execute();
             $result = $stmt->fetch();
 
-            if ($result) {
-                header("Location:contact.php?pageerror= Email already exist");
+            // other contact with same email was found
+            if ($result && $result['id'] != $id) {
+                header("Location: contact.php?pageerror= Email is already exist");
             } else {
+
                 $q = "update contact set name='" . $name . "', phone='" . $phone . "', email='" . $email . "', Adress='" . $adresse
                     . "' where id=" . $id;
                 $stmt = $this->conn->prepare($q);
                 $stmt->execute();
-
                 header('location:contact.php');
             }
         }

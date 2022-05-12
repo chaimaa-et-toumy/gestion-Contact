@@ -33,7 +33,7 @@ function validateContact(){
     let expname =/^[A-Za-z]{3,}$/;
     let expEmail =/[a-z][0-9]*@[a-z]+\.[a-z]{2,3}/;
     let expphone = /^[0-9]{10,}$/;
-    let expadresse = /^[A-Za-z]{10,}$/;
+    let expadresse = /^[A-Za-z]{5,}$/;
 
 
     if(usernameValue === '') {
